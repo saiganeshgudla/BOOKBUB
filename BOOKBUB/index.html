@@ -1,0 +1,479 @@
+<!DOCTYPE html><html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><head>
+<script async="" src="js/gtm.js"></script><script crossorigin="" src="js/rollbar.min.js" async=""></script><script>var _rollbarConfig = {"accessToken":"0d68d056610a450682cce8cfff37a7e8","autoInstrument":true,"captureUncaught":true,"captureUnhandledRejections":true,"checkIgnore":
+    function(isUncaught, args, payload) {
+      // ignore ad blockers
+      var bait = document.getElementById("blocker-bait");
+      if (!!bait && bait.offsetHeight === 0) {
+        return true;
+      };
+
+      // ignore unsupported browsers
+      var supportedBrowserRegex =  /Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Firefox\/(1{2}[5-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(109|1[1-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Maci.+ Version\/(15\.([6-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/([1-9]\d{2}|\d{4,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]([6-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Opera Mini|Android:?[ /-](1{2}[7-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/(7[3-9]|[89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(1{2}[7-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(1{2}[7-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(2[1-9]|[3-9]\d|\d{3,})\.\d+|Android.+MQ{2}Browser\/(13(\.([1-9]|\d{2,})|)|(1[4-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(2\.([5-9]|\d{2,})|([3-9]|\d{2,})\.\d+)(\.\d+|)/;
+      var bbAppRegex = /strand-.*/;
+      if (!supportedBrowserRegex.test(payload.client.javascript.browser)) {
+
+        // Requests from the BB app have a unique useragent that we should still report rollbars for
+        if (!bbAppRegex.test(payload.client.javascript.browser)) {
+          return true;
+        }
+      }
+
+      // Ignore specific users. Useful for reducing noise from small numbers of users
+      // who generate lots of errors
+      var ignoredUserIds = [
+        24332864, // 'spoof@aexp.com' generating hundreds/thousands of errors
+      ];
+
+      if (payload && payload.person) {
+        return ignoredUserIds.indexOf(payload.person.id) > -1;
+      }
+    }
+  ,"hostSafeList":["cloudfront\\.net","bookbub\\.com","bookwormle\\.com","kobubob\\.com","kobubob\\.test"],"hostBlockList":["pinimg\\.com","qualaroo\\.com","gstatic\\.com"],"ignoredMessages":["\"readyState\":4","\"readyState\":0","\\[Facebook Pixel\\]","\\[OptinMonster\\]","UET is not defined","Pinterest Tag Error","Qualaroo","adsbygoogle","mixpanel","pktAnnotationHighlighter","googlesyndication","platform.instagram.com","^Failed to fetch$","NetworkError when attempting to fetch resource.","^cancelled$","The network connection was lost"],"payload":{"environment":"production","client":{"javascript":{"code_version":"0edb186de3abf027e362f2b704a61c4a6580e2c2-1701118301","source_map_enabled":true,"guess_uncaught_frames":true}}}};</script>
+<script>!function(r){var e={};function o(n){if(e[n])return e[n].exports;var t=e[n]={i:n,l:!1,exports:{}};return r[n].call(t.exports,t,t.exports,o),t.l=!0,t.exports}o.m=r,o.c=e,o.d=function(r,e,n){o.o(r,e)||Object.defineProperty(r,e,{enumerable:!0,get:n})},o.r=function(r){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(r,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(r,"__esModule",{value:!0})},o.t=function(r,e){if(1&e&&(r=o(r)),8&e)return r;if(4&e&&"object"==typeof r&&r&&r.__esModule)return r;var n=Object.create(null);if(o.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:r}),2&e&&"string"!=typeof r)for(var t in r)o.d(n,t,function(e){return r[e]}.bind(null,t));return n},o.n=function(r){var e=r&&r.__esModule?function(){return r.default}:function(){return r};return o.d(e,"a",e),e},o.o=function(r,e){return Object.prototype.hasOwnProperty.call(r,e)},o.p="",o(o.s=0)}([function(r,e,o){"use strict";var n=o(1),t=o(5);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdn.rollbar.com/rollbarjs/refs/tags/v2.26.1/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,e,o){"use strict";var n=o(2),t=o(3);function a(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}var l=0;function i(r,e){this.options=r,this._rollbarOldOnError=null;var o=l++;this.shimId=function(){return o},"undefined"!=typeof window&&window._rollbarShims&&(window._rollbarShims[o]={handler:e,messages:[]})}var s=o(4),d=function(r,e){return new i(r,e)},c=function(r){return new s(d,r)};function u(r){return a((function(){var e=this,o=Array.prototype.slice.call(arguments,0),n={shim:e,method:r,args:o,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)}))}i.prototype.loadFull=function(r,e,o,n,t){var l=!1,i=e.createElement("script"),s=e.getElementsByTagName("script")[0],d=s.parentNode;i.crossOrigin="",i.src=n.rollbarJsUrl,o||(i.async=!0),i.onload=i.onreadystatechange=a((function(){if(!(l||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){i.onload=i.onreadystatechange=null;try{d.removeChild(i)}catch(r){}l=!0,function(){var e;if(void 0===r._rollbarDidLoad){e=new Error("rollbar.js did not load");for(var o,n,a,l,i=0;o=r._rollbarShims[i++];)for(o=o.messages||[];n=o.shift();)for(a=n.args||[],i=0;i<a.length;++i)if("function"==typeof(l=a[i])){l(e);break}}"function"==typeof t&&t(e)}()}})),d.insertBefore(i,s)},i.prototype.wrap=function(r,e,o){try{var n;if(n="function"==typeof e?e:function(){return e||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){o&&"function"==typeof o&&o.apply(this,arguments);try{return r.apply(this,arguments)}catch(o){var e=o;throw e&&("string"==typeof e&&(e=new String(e)),e._rollbarContext=n()||{},e._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=e),e}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(e){return r}};for(var p="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<p.length;++f)i.prototype[p[f]]=u(p[f]);r.exports={setupShim:function(r,e){if(r){var o=e.globalAlias||"Rollbar";if("object"==typeof r[o])return r[o];r._rollbarShims={},r._rollbarWrappedError=null;var l=new c(e);return a((function(){e.captureUncaught&&(l._rollbarOldOnError=r.onerror,n.captureUncaughtExceptions(r,l,!0),e.wrapGlobalEventHandlers&&t(r,l,!0)),e.captureUnhandledRejections&&n.captureUnhandledRejections(r,l,!0);var a=e.autoInstrument;return!1!==e.enabled&&(void 0===a||!0===a||function(r){return!("object"!=typeof r||void 0!==r.page&&!r.page)}(a))&&r.addEventListener&&(r.addEventListener("load",l.captureLoad.bind(l)),r.addEventListener("DOMContentLoaded",l.captureDomContentLoaded.bind(l))),r[o]=l,l}))()}},Rollbar:c}},function(r,e,o){"use strict";function n(r,e,o,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null);var t=e.handleUncaughtException.apply(e,n);o&&o.apply(r,n),"anonymous"===t&&(e.anonymousErrorsPending+=1)}r.exports={captureUncaughtExceptions:function(r,e,o){if(r){var t;if("function"==typeof e._rollbarOldOnError)t=e._rollbarOldOnError;else if(r.onerror){for(t=r.onerror;t._rollbarOldOnError;)t=t._rollbarOldOnError;e._rollbarOldOnError=t}e.handleAnonymousErrors();var a=function(){var o=Array.prototype.slice.call(arguments,0);n(r,e,t,o)};o&&(a._rollbarOldOnError=t),r.onerror=a}},captureUnhandledRejections:function(r,e,o){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var o,n,t;try{o=r.reason}catch(r){o=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!o&&t&&(o=t.reason,n=t.promise)}catch(r){}o||(o="[unhandledrejection] error getting `reason` from event"),e&&e.handleUnhandledRejection&&e.handleUnhandledRejection(o,n)};n.belongsToShim=o,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}}},function(r,e,o){"use strict";function n(r,e,o){if(e.hasOwnProperty&&e.hasOwnProperty("addEventListener")){for(var n=e.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(e,o,t){n.call(this,e,r.wrap(o),t)};t._rollbarOldAdd=n,t.belongsToShim=o,e.addEventListener=t;for(var a=e.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,e,o){a.call(this,r,e&&e._rollbar_wrapped||e,o)};l._rollbarOldRemove=a,l.belongsToShim=o,e.removeEventListener=l}}r.exports=function(r,e,o){if(r){var t,a,l="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(t=0;t<l.length;++t)r[a=l[t]]&&r[a].prototype&&n(e,r[a].prototype,o)}}},function(r,e,o){"use strict";function n(r,e){this.impl=r(e,this),this.options=e,function(r){for(var e=function(r){return function(){var e=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,e)}},o="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<o.length;n++)r[o[n]]=e(o[n])}(n.prototype)}n.prototype._swapAndProcessMessages=function(r,e){var o,n,t;for(this.impl=r(this.options);o=e.shift();)n=o.method,t=o.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],o.ts]):this[n].apply(this,t));return this},r.exports=n},function(r,e,o){"use strict";r.exports=function(r){return function(e){if(!e&&!window._rollbarInitialized){for(var o,n,t=(r=r||{}).globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;o=window._rollbarShims[i++];)n||(n=o.handler),o.handler._swapAndProcessMessages(l,o.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'attributionSource': 'Null Referred Unsupported Geo'
+    });
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KMTG65');</script>
+  <!-- End Google Tag Manager -->
+
+
+<title>BookBub: Get ebook deals, handpicked recommendations, and author updates</title>
+<link rel="stylesheet" media="all" href="css/signup-563-0484e52b0b40c6511e8518c86010d79692f43443f414ceca59a33eb760569a86.css">
+<link rel="stylesheet" media="all" href="css/signup-570-4b9ce7a8af559250cb6a893ec46b89a570d780634b07a85a0862789ac2b89558.css">
+<link rel="stylesheet" media="all" href="css/signup-741-f89e2b699783c7314dc9f4e9bc0870869ef6530bc2e6100ee8161e51b0b4483e.css">
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="oDupJuP7pTPbOxutTpgb52lEbcttNSX5ORY4i8Gh+bDjR/y/iN3a54nmGaCAZblWiIH/MLzb2LY/8+amz8YEKw==">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+<meta content="Get free and bargain bestsellers for Kindle, Nook, and more, as well as updates from your favorite authors.  Sign up free today, and start reading instantly!" name="description">
+<meta content="free ebooks,free books,free kindle books,ebooks,deals,ebook deals,discounted ebooks,book recommendations,author recommendations" name="keywords">
+<meta content="305226807716541" property="fb:app_id">
+<meta content="974abea7566019dae00d60418b9c52e1" name="p:domain_verify">
+<meta content="" property="og:title">
+<meta content="" property="og:description">
+<meta content="" property="og:url">
+<meta content="" property="og:type">
+<link href="//fonts.googleapis.com" rel="preconnect">
+<link crossorigin="true" href="//fonts.gstatic.com" rel="preconnect">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700&amp;display=swap&amp;subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Serif:400,400i&amp;display=swap&amp;subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Roboto&amp;display=swap&amp;subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Lora:400,500,600,700&amp;display=swap&amp;subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Oswald:400,500,600,800&amp;display=swap&amp;subset=latin-ext" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Playfair+Display:900&amp;display=swap&amp;subset=latin-ext" rel="stylesheet" type="text/css">
+
+
+<link href="favicon.ico" rel="shortcut icon">
+<link rel="apple-touch-icon" type="image/x-icon" href="images/apple-touch-icon-efefbd791d22aa29b9dbf4ebcf832ec12e4ada7cff15866e18d5df05b5ea4a93.png" sizes="180x180">
+<script>
+  var bb_use_external_scripts = true;
+  window.randomAjaxDelays = false;
+  window.facebookAppId = "305226807716541";
+  window.bubTools = {};
+  window.bubEnv = "production";
+  window.nileEnv = "production";
+  window.bubEventsProcessingUrl = "https://client-events-ingress.bookbub.com";
+</script>
+<link as="image" href="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/desktop-book-shelves-3x" rel="preload">
+
+<script type="text/javascript" src="js/api.min.js" async="" data-user="48738" data-account="54925"></script></head>
+<body data-current-region="us" style="">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KMTG65"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager -->
+
+<div class="site-alert" id="browser-notice" style="display:none; margin:0; padding:0">
+<div class="container">
+<p><strong>Great books are timeless, web browsers are not.</strong> It looks like your browser is out of date. We do our best to support a wide variety of browsers and devices, but BookBub works best in a modern browser. For help upgrading, check out <a href="https://browsehappy.com/">https://browsehappy.com/</a>.</p>
+</div>
+</div>
+<div class="site-alert" id="biscuit-notice" style="display:none; margin: 0; padding: 0">
+<div class="container">
+<p><strong>BookBub offers a great personalized experience.</strong> Unfortunately, your browser doesn't accept cookies, which limits how good an experience we can provide.  For more info on how to enable cookies, check out <a href="http://www.whatarecookies.com/enable.asp">http://www.whatarecookies.com/</a>.</p>
+</div>
+</div>
+
+<div data="[{" seoname":"bestsellers","displayname":"bestsellers","internalname":"bestsellers","categorypagepath":"="" categories="" bestsellers-ebooks"},{"seoname":"crime-fiction","displayname":"crime="" fiction","internalname":"crime_fiction","categorypagepath":"="" crime-fiction-ebooks"},{"seoname":"advice-and-how-to","displayname":"advice="" and="" how-to","internalname":"advice_and_how_to","categorypagepath":"="" advice-and-how-to-ebooks"},{"seoname":"contemporary-romance","displayname":"contemporary="" romance","internalname":"romance","categorypagepath":"="" contemporary-romance-ebooks"},{"seoname":"science-fiction","displayname":"science="" fiction","internalname":"science_fiction","categorypagepath":"="" science-fiction-ebooks"},{"seoname":"historical-fiction","displayname":"historical="" fiction","internalname":"historical_fiction","categorypagepath":"="" historical-fiction-ebooks"},{"seoname":"psychological-thrillers","displayname":"psychological="" thrillers","internalname":"psychological_thrillers","categorypagepath":"="" psychological-thrillers-ebooks"},{"seoname":"cozy-mysteries","displayname":"cozy="" mysteries","internalname":"cozy_mysteries","categorypagepath":"="" cozy-mysteries-ebooks"},{"seoname":"fantasy","displayname":"fantasy","internalname":"fantasy","categorypagepath":"="" fantasy-ebooks"},{"seoname":"biographies-and-memoirs","displayname":"biographies="" memoirs","internalname":"biographies_and_memoirs","categorypagepath":"="" biographies-and-memoirs-ebooks"},{"seoname":"rom-com","displayname":"rom-com","internalname":"rom_com","categorypagepath":"="" rom-com-ebooks"},{"seoname":"womens-fiction","displayname":"women's="" fiction","internalname":"womens_fiction","categorypagepath":"="" womens-fiction-ebooks"},{"seoname":"historical-romance","displayname":"historical="" romance","internalname":"historical_romance","categorypagepath":"="" historical-romance-ebooks"},{"seoname":"horror","displayname":"horror","internalname":"horror","categorypagepath":"="" horror-ebooks"},{"seoname":"literary-fiction","displayname":"literary="" fiction","internalname":"literary_fiction","categorypagepath":"="" literary-fiction-ebooks"},{"seoname":"history","displayname":"history","internalname":"history","categorypagepath":"="" history-ebooks"},{"seoname":"historical-mysteries","displayname":"historical="" mysteries","internalname":"historical_mysteries","categorypagepath":"="" historical-mysteries-ebooks"},{"seoname":"classics","displayname":"classics","internalname":"classics","categorypagepath":"="" classics-ebooks"},{"seoname":"general-nonfiction","displayname":"general="" nonfiction","internalname":"general_nonfiction","categorypagepath":"="" general-nonfiction-ebooks"},{"seoname":"romantic-suspense","displayname":"romantic="" suspense","internalname":"romantic_suspense","categorypagepath":"="" romantic-suspense-ebooks"},{"seoname":"thrillers","displayname":"thrillers","internalname":"thrillers","categorypagepath":"="" thrillers-ebooks"},{"seoname":"new-adult-romance","displayname":"new="" adult="" romance","internalname":"new_adult","categorypagepath":"="" new-adult-romance-ebooks"},{"seoname":"science","displayname":"science","internalname":"science","categorypagepath":"="" science-ebooks"},{"seoname":"politics-and-current-events","displayname":"politics="" current="" events","internalname":"politics_and_current_events","categorypagepath":"="" politics-and-current-events-ebooks"},{"seoname":"supernatural-suspense","displayname":"supernatural="" suspense","internalname":"supernatural_thrillers","categorypagepath":"="" supernatural-suspense-ebooks"},{"seoname":"teen-and-young-adult","displayname":"teen="" young="" adult","internalname":"teen_and_young_adult","categorypagepath":"="" teen-and-young-adult-ebooks"},{"seoname":"cooking","displayname":"cooking","internalname":"cooking","categorypagepath":"="" cooking-ebooks"},{"seoname":"christian-nonfiction","displayname":"christian="" nonfiction","internalname":"christian_nonfiction","categorypagepath":"="" christian-nonfiction-ebooks"},{"seoname":"religion-and-spirituality","displayname":"religion="" spirituality","internalname":"religious_and_inspirational","categorypagepath":"="" religion-and-spirituality-ebooks"},{"seoname":"paranormal-romance","displayname":"paranormal="" romance","internalname":"paranormal_romance","categorypagepath":"="" paranormal-romance-ebooks"},{"seoname":"christian-fiction","displayname":"christian="" fiction","internalname":"christian_fiction","categorypagepath":"="" christian-fiction-ebooks"},{"seoname":"action-and-adventure","displayname":"action="" adventure","internalname":"action_and_adventure","categorypagepath":"="" action-and-adventure-ebooks"},{"seoname":"erotic-romance","displayname":"erotic="" romance","internalname":"erotic_romance","categorypagepath":"="" erotic-romance-ebooks"},{"seoname":"childrens","displayname":"children's","internalname":"childrens","categorypagepath":"="" childrens-ebooks"},{"seoname":"parenting","displayname":"parenting","internalname":"parenting","categorypagepath":"="" parenting-ebooks"},{"seoname":"middle-grade","displayname":"middle="" grade","internalname":"middle_grade","categorypagepath":"="" middle-grade-ebooks"},{"seoname":"true-crime","displayname":"true="" crime","internalname":"true_crime","categorypagepath":"="" true-crime-ebooks"},{"seoname":"dark-erotica","displayname":"dark="" romance="" \u0026="" erotica","internalname":"dark_erotica","categorypagepath":"="" dark-erotica-ebooks"},{"seoname":"time-travel-romance","displayname":"time="" travel="" romance","internalname":"time_travel_romance","categorypagepath":"="" time-travel-romance-ebooks"},{"seoname":"business","displayname":"business","internalname":"business","categorypagepath":"="" business-ebooks"},{"seoname":"lgbtq","displayname":"lgbtq+","internalname":"lgbt","categorypagepath":"="" lgbtq-ebooks"},{"seoname":"humor","displayname":"humor","internalname":"humor","categorypagepath":"="" humor-ebooks"},{"seoname":"american-historical-romance","displayname":"american="" historical="" romance","internalname":"american_historical_romance","categorypagepath":"="" american-historical-romance-ebooks"},{"seoname":"black-stories-and-experiences","displayname":"black="" stories="" experiences","internalname":"black_stories_experiences","categorypagepath":"="" black-stories-and-experiences-ebooks"}]"="" id="category-store-data"></div>
+
+<div data="{" appstate":{},"user":{"loggedin":false,"tokened":false,"userid":null,"useradtoken":"34a7e18ceee6b6bc39e6bfe088f95d98a19e8c687007ca70f9b78bfed9f4b200","chirppopupsignupurl":"https:="" www.chirpbooks.com="" users="" sign_up?source="bb_site_siteoverlay&quot;,&quot;emailAddress&quot;:null,&quot;hashedEmailAddress&quot;:null,&quot;countryCode&quot;:&quot;nl&quot;,&quot;signupRegion&quot;:null,&quot;regionId&quot;:1,&quot;trackingId&quot;:1067803714,&quot;hasAccount&quot;:false,&quot;mid&quot;:null,&quot;bookListCounts&quot;:{},&quot;signedUpRecently&quot;:false,&quot;retailerIds&quot;:[],&quot;readingPersona&quot;:null},&quot;features&quot;:{&quot;adBillingEnabled&quot;:false,&quot;preorderBillingEnabled&quot;:false,&quot;browseAuthors&quot;:false,&quot;pdAdsOutage&quot;:false,&quot;featuredNewReleaseBilling&quot;:false,&quot;bookDataEnabled&quot;:false,&quot;pdAdsFormAdCampaignPropertyClasses&quot;:false,&quot;adsFormRelatedAuthorsTab&quot;:true,&quot;featuredDealBillingEnabled&quot;:false,&quot;invoicingEnabled&quot;:false,&quot;readingPersonasOnboarding&quot;:null,&quot;bhmLaunchCarousel&quot;:false,&quot;ageGroupSurveyEnabled&quot;:false,&quot;disableLaunchHighlightsCarousel&quot;:false,&quot;enableAppMagicLink&quot;:true,&quot;enableFeedFyp&quot;:false,&quot;enableStrandQuizV2&quot;:true,&quot;enabledStrandBookPageStories&quot;:true,&quot;enabledStrandAuthorPageStories&quot;:false},&quot;profile&quot;:{},&quot;userSettings&quot;:{},&quot;captcha&quot;:{&quot;enabled&quot;:true,&quot;show&quot;:true,&quot;endpoints&quot;:[&quot;user_signups#create_onsite&quot;,&quot;user_signups#create_api&quot;,&quot;user_signups#create_for_book&quot;,&quot;sessions#create&quot;],&quot;sitekey&quot;:&quot;6Leddx4UAAAAAFNhJY68nZ9caoR0ItG41x7S-06D&quot;},&quot;captchaV3&quot;:{&quot;show&quot;:true,&quot;sitekey&quot;:&quot;6Lf7feQUAAAAAA_tx2ITzvEiFaosbpJ-9tqAafYA&quot;},&quot;affiliate&quot;:{},&quot;deviceType&quot;:&quot;desktop&quot;}&quot;" id="user-store-data"></div>
+
+<div data="{" taftbaseuri":"https:="" taft.bookbub.com="" api","irisbaseuri":"https:="" api.iris.bookbub.com","braintreedisabled":false,"displayadsenabled":true,"partnercontacturl":"https:="" partners.bookbub.com="" contact="" new","billingfaqurl":"https:="" support.bookbub.com="" articles="" how-do-i-pay-for-my-promotions="" "}"="" id="config-store-data"></div>
+
+
+<div id="page-viewport">
+<div id="page-content" style="">
+
+<div id="static-page"></div>
+<div data="{" referral_code":"","email_field_value":"","hide_oauth":null}"="" id="welcome">
+<div class="reader-header-nav">
+<div data-hide-nav-links="true" data-hide-signup-button="true" data-impersonating="" id="header-nav-app">
+<div class="header-nav-container">
+<div class="container">
+<div class="header-nav-logo">
+<a href="/">
+<svg data-name="Bookbub Logo" height="22px" id="bookbub-logo" viewBox="0 0 630.07 122.53" width="110px" xmlns="http://www.w3.org/2000/svg">
+<title>BookBub Logo</title>
+<path d="M0 120.51V6.43h38.82q17.59 0 27.51 7t9.93 19.59a24.59 24.59 0 0 1-5.81 16.16 31.89 31.89 0 0 1-15.65 10v.23q12.09 1.55 19.22 9a25.63 25.63 0 0 1 7.13 18.45q0 15.34-11 24.49T40.7 120.5zm22.08-97.1v29.91h12q8.91 0 14-4.22t5-11.9q0-13.79-19.69-13.79zm0 47v33.17h15.18q9.76 0 15.19-4.5t5.42-12.48q0-16.2-21.39-16.2zM88.53 80.29q0-20 11.78-31.58t31.95-11.59q19.45 0 30.73 11.35t11.27 30.43q0 19.84-11.66 31.74t-31.58 11.9q-19.53 0-31-11.43T88.53 80.29zm21.85-.33q0 25.65 21.31 25.65 20.57.02 20.57-26.25 0-25.4-20.64-25.4-10.08 0-15.66 6.94t-5.58 19.06zM182.59 80.29q0-20 11.78-31.58t31.89-11.59q19.45 0 30.73 11.35t11.27 30.43q0 19.84-11.66 31.74t-31.58 11.9q-19.53 0-31-11.43t-11.43-30.82zm21.86-.33q0 25.65 21.31 25.65 20.5.02 20.5-26.25 0-25.4-20.58-25.4-10.08 0-15.66 6.94t-5.57 19.06zM357.68 120.51h-26.73l-28.91-40.06h-.23v40.07h-21.63V-.04h21.62v76.69h.23l27.23-37.59h26.1l-31.7 38.6zM367.26 120.51V6.43h38.83q17.59 0 27.51 7T443.52 33a24.59 24.59 0 0 1-5.81 16.16 31.89 31.89 0 0 1-15.65 10v.23q12.09 1.55 19.22 9a25.63 25.63 0 0 1 7.13 18.45q0 15.34-11 24.49t-29.45 9.15zm22-97.1v29.91h12q8.91 0 14-4.22t5-11.9q0-13.79-19.69-13.79zm0 47v33.17h15.19q9.76 0 15.19-4.5t5.42-12.48q0-16.2-21.39-16.2zM533.69 120.51h-21.55v-12.55h-.39q-9 14.57-25 14.57-28.6 0-28.6-34.41V39.06h21.62v46.81q0 19.76 15.35 19.76a15.53 15.53 0 0 0 12.24-5.39q4.73-5.39 4.73-14.45V39.06h21.54zM569.85 110.36v10.15h-21.59V-.04h21.62v52h.23q9.45-14.8 27-14.8 15.5 0 24.26 10.85t8.76 29.53q0 20.38-10 32.7t-26.7 12.32q-15.27 0-23.25-12.17zm-.31-24.64a20.35 20.35 0 0 0 5.19 14.18 16.82 16.82 0 0 0 13 5.73 17.28 17.28 0 0 0 14.8-7.36q5.35-7.36 5.35-20.69 0-11.08-4.88-17.36t-13.74-6.26a17.93 17.93 0 0 0-14.14 6.35q-5.54 6.36-5.54 16.2z" fill="#F44336"></path>
+</svg>
+
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="welcome-container">
+<div class="top-sign-up-row">
+<div class="sign-up-section">
+<div class="sign-up-text">
+<h1 class="sign-up-title">
+Amazing deals on bestselling ebooks
+<p class="sign-up-content">
+Join for
+<span class="highlight-word">FREE</span>
+to never miss a deal:
+</p>
+</h1>
+<div class="with-oauth" id="sign-up-form-1"></div>
+</div>
+</div>
+<div class="sign-up-section">
+<img id="book-shelf-international" class="book-shelf-international" alt="Image of books on a shelf" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto,h_710/welcome/welcome-book-shelves_2x">
+</div>
+</div>
+<div class="image-row">
+<div class="image-row-item second">
+<img id="coffee-phone" class="photo" alt="Image of coffee and a phone" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/coffee-phone_2x">
+</div>
+<div class="image-row-item first">
+<div class="right-text">
+<h2 class="header">
+Read the biggest ebooks for up to 95% off.
+</h2>
+<p class="body">
+Each day you'll receive a selection of discounted titles, from bestsellers to hidden gems.
+</p>
+</div>
+</div>
+</div>
+<img class="photo arrow down" alt="Down arrow" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/down-arrow">
+<img class="photo arrow right side" alt="Right arrow" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/right-arrow">
+<div class="image-row">
+<div class="image-row-item first">
+<div class="left-text">
+<h2 class="header">
+Discover personalized ebook deals.
+</h2>
+<p class="body">
+Tell BookBub what you like to read, and get handpicked deals that match your reading taste.
+</p>
+</div>
+</div>
+<div class="image-row-item second">
+<img id="ipad" class="photo align-right" alt="Books on an ipad" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/ipad-library_2x">
+</div>
+</div>
+<img class="photo arrow down" alt="Down arrow" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/down-arrow">
+<img class="photo arrow left side" alt="Left arrow" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/left-arrow">
+<div class="image-row retailer-row">
+<div class="image-row-item second">
+<img id="kindle-iced-tea" class="photo bump-left" alt="Kindle e-reader with a glass of iced tea" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/kindle-ice-tea_2x">
+</div>
+<div class="image-row-item first">
+<div class="right-text">
+<h2 class="header">
+Buy from your favorite ebook store.
+</h2>
+<p class="body">
+Deals are available at all major retailers. Read on any phone, tablet, Kindle, or other preferred device.
+</p>
+<div class="logos">
+<div class="logo-row">
+<img class="logo-img" alt="Get it on Apple Books" ssl_detected="true" src="images/apple_books_logo.png">
+<img class="logo-img" alt="Get it on Google Play" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto,e_trim,w_302/welcome/google-play-badge">
+</div>
+<div class="logo-row">
+<img class="retailer-img" alt="Amazon Kindle Logo" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto,e_trim,w_400/welcome/kindle_logo">
+<img class="retailer-img" alt="Kobo Logo" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto,e_trim,w_400/welcome/rakuten_kobo_logo">
+<img class="retailer-img" alt="Nook Logo" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto,e_trim,w_222/welcome/nook_logo">
+</div>
+</div>
+</div>
+</div>
+</div>
+<img class="photo arrow down" alt="Down arrow" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/down-arrow">
+<img class="photo arrow right side" alt="Right arrow" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/right-arrow">
+<div class="image-row">
+<div class="image-row-item first">
+<div class="left-text">
+<h2 class="header">
+Get deal alerts for your wishlist.
+</h2>
+<p class="body">
+Save your most wanted books, and we'll notify you when they're discounted.
+</p>
+</div>
+</div>
+<div class="image-row-item second">
+<img id="wishlist-alerts" class="photo bump-left" alt="Notifications on books you wishlisted" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/wishlist-alerts">
+</div>
+</div>
+<div class="testimonial-section">
+<div class="container">
+<h2 class="testimonial-title">
+Join millions of happy readers.
+</h2>
+<div class="testimonials">
+<div class="testimonial">
+<div class="stars">
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+</div>
+<p class="testimonial-content">
+"I would tell anyone to just sign up without reservation. I now have more books than I can read in a lifetime."
+</p>
+<div class="testimonial-details">
+<div class="testimonial-user">
+Suzie M.
+</div>
+<div class="testimonial-location">
+Auburn, WA
+</div>
+</div>
+</div>
+<div class="vertical-divider"></div>
+<div class="testimonial">
+<div class="stars">
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+</div>
+<p class="testimonial-content">
+"There are series I would have never discovered if it weren’t for BookBub, and I always feel like I got a deal, always."
+</p>
+<div class="testimonial-details">
+<div class="testimonial-user">
+Ellyn C.
+</div>
+<div class="testimonial-location">
+Huntington Beach, CA
+</div>
+</div>
+</div>
+<div class="vertical-divider"></div>
+<div class="testimonial">
+<div class="stars">
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+<span><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_star"></use></svg></span>
+</div>
+<p class="testimonial-content">
+"I actually download several books a week... I would say I’ve saved approximately $40 or more each month using BookBub."
+</p>
+<div class="testimonial-details">
+<div class="testimonial-user">
+Mona E.
+</div>
+<div class="testimonial-location">
+Stockton, CA
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="image-row bottom-signup-row">
+<div class="image-row-item second">
+<img id="bottom-signup" class="photo" alt="iPhone on top of book covers" ssl_detected="true" src="https://res.cloudinary.com/bookbub/image/upload/f_auto,q_auto/welcome/sign-up-iphone_2x">
+</div>
+<div class="image-row-item first">
+<div class="right-text bottom-signup-text">
+<div class="meta-header">Join BookBub for Free</div>
+<h2 class="header">
+Start saving on bestselling ebooks:
+</h2>
+<div id="sign-up-form-2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page-footer hidden-print">
+<div class="footer stackable">
+<div class="container">
+<div class="row">
+<div class="footer-header-wrapper col-md-12 col-sm-12">
+<div class="row footer-header">
+<div class="footer-link-wrapper">
+<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 footer-logo-container">
+<a class="footer-logo-wrapper" href="https://www.bookbub.com/home"><img class="footer-logo img-responsive" alt="BookBub logo" ssl_detected="true" src="images/logo-footer-30f41b9f59b0778251ce0c06d4167fd482b9628bbc4a50beb9ab7bbf48b23fd4.png"></a>
+</div>
+<div class="col-md-10 col-sm-9 col-xs-6 footer-social-container">
+<span>
+<a class="social-links" href="http://www.facebook.com/BookBub"><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_facebook"></use></svg>
+<div class="sr-only">visit our facebook page</div>
+</a><a class="social-links" href="http://twitter.com/BookBub"><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_twitter"></use></svg>
+<div class="sr-only">visit our twitter page</div>
+</a><a class="social-links" href="http://pinterest.com/BookBub"><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_pinterest"></use></svg>
+<div class="sr-only">visit our pinterest page</div>
+</a><a class="social-links" href="https://www.instagram.com/bookbub"><svg width="1em" height="1em" style="font-size: 1.5em; fill: currentColor; vertical-align: middle;"><use xlink:href="#bb_icon_instagram"></use></svg>
+<div class="sr-only">visit our instagram page</div>
+</a></span>
+</div>
+</div>
+</div>
+</div>
+<div class="link-panel col-md-3 col-sm-3">
+<div class="footer-subheader">Company</div>
+<ul class="list-unstyled">
+<li><a href="https://www.bookbub.com/home/about.php">About</a></li>
+<li><a href="https://www.bookbub.com/careers">Careers</a></li>
+<li><a href="https://www.bookbub.com/for-the-press">For the Press</a></li>
+<li><a href="https://www.bookbub.com/home/privacy.php">Privacy Policy</a></li>
+<li><a href="https://www.bookbub.com/home/terms.php">Terms of Service</a></li>
+<li><a href="https://www.bookbub.com/contact/new">Contact</a></li>
+<li><a href="https://www.bookbub.com/your-privacy-choices">Your Privacy Choices</a></li>
+</ul>
+</div>
+<div class="link-panel col-md-3 col-sm-3">
+<div class="footer-subheader">Readers</div>
+<ul class="list-unstyled">
+<li><a href="https://www.bookbub.com/home/overview.php">What Is BookBub?</a></li>
+<li><a href="https://www.bookbub.com/ebook-deals">Ebook Deals</a></li>
+<li><a href="https://www.bookbub.com/ebook-deals/free-ebooks">Free Ebooks</a></li>
+<li><a href="https://www.bookbub.com/ebook-deals/free-kindle-books">Free Kindle Books</a></li>
+<li><a href="https://www.bookbub.com/blog">The BookBub Blog</a></li>
+<li><a href="https://www.bookbub.com/profile/discover">Connect with Friends</a></li>
+<li><a href="https://www.bookbub.com/deals/invite">Invite Your Friends</a></li>
+<li><a href="https://help.bookbub.com/">Help</a></li>
+<li><a href="https://www.bookbub.com/authors/index">All Authors</a></li>
+<li><a href="https://www.bookbub.com/books/index">All Books</a></li>
+</ul>
+</div>
+<div class="link-panel col-md-3 col-sm-3">
+<div class="footer-subheader">Publishers &amp; Authors</div>
+<ul class="list-unstyled">
+<li><a href="https://www.bookbub.com/partners/overview">Partners Overview</a></li>
+<li><a href="https://partners.bookbub.com/campaigns/select_book">Submit New Deal</a></li>
+<li><a href="https://partners.bookbub.com/?pd_source=psite_footer_partner-dashboard">Partner Dashboard</a></li>
+<li><a href="https://partners.bookbub.com/authors?pd_source=psite_footer_claim-a-profile">Claim an Author Profile</a></li>
+<li><a href="https://insights.bookbub.com">BookBub Partners Blog</a></li>
+<li><a href="https://www.bookbub.com/partners/faq">Partner FAQ</a></li>
+</ul>
+</div>
+<div class="link-panel col-md-3 col-sm-3">
+<div class="footer-subheader">Popular Blog Posts</div>
+<ul class="list-unstyled">
+<li class="blog-post"><a href="https://www.bookbub.com/blog/best-book-series-publishers-blurbs">62 of the Best Book Series of All Time</a></li>
+<li class="blog-post"><a href="https://www.bookbub.com/blog/how-to-find-a-book-from-a-vague-description">Find a Book from a Vague Description</a></li>
+<li class="blog-post"><a href="https://www.bookbub.com/blog/top-fantasy-worlds">Top Fantasy Worlds in Literature</a></li>
+<li class="blog-post"><a href="https://www.bookbub.com/blog/best-malcolm-gladwell-books-ranked">Malcolm Gladwell's Best Books</a></li>
+<li class="blog-post"><a href="https://www.bookbub.com/blog/books-that-will-make-you-smarter-publishers-blurbs">Books to Make You Smarter</a></li>
+<li class="blog-post"><a href="https://www.bookbub.com/blog/lilac-girls-book-club-questions">Book Club Kit: 'Lilac Girls'</a></li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="link-panel copyright col-sm-12">
+<p class="small"> MADE BY LPU STUDENTS</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="js/signup-563-377ce5128a9f560df28616347349e2c97a09f064cb306ae24acf68fde5400aa6.js" crossorigin="anonymous"></script>
+<script src="js/signup-328-e54c8178ccbfcf19b90b644f1dc6af2706208b6c6927c920eda9487cf2b3d51e.js" crossorigin="anonymous"></script>
+<script src="js/signup-570-95303b94c33c5da537f96d09ecb04d2bf1ae9f51404fc26abf2c0214bead4c1d.js" crossorigin="anonymous"></script>
+<script src="js/signup-741-6d71e805ff08d71a14457f20f261018ad755e3f59a396f6e3a819b3550bbd944.js" crossorigin="anonymous"></script>
+<script src="js/sprites-314-63f08ff3f11edd64178e35704b4eaed04cb515ec50dc413ff1273f674469ff56.js" crossorigin="anonymous" async="async"></script>
+
+<script async="" defer="" src="js/api.js"></script>
+
+
+<script>
+  (function() {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://a.omappapi.com/app/js/api.min.js';
+    script.async = 'true';
+    script.setAttribute('data-user', '48738');
+    script.setAttribute('data-account', '54925');
+    script.addEventListener('load', function() {
+      document.addEventListener('om.Campaign.canShow', function() {
+        window.optInMonsterCampaignsPresent = true;
+      });
+      document.addEventListener("om.Campaign.close", function(event) {
+        bubEvents.track('OptinMonster campaign: ' + event.detail.Campaign.name, "Popup dismissed", { label: "campaign_id", value: event.detail.Campaign.id });
+      });
+      document.addEventListener("om.Campaign.afterShow", function(event) {
+        Cookies.set('om-sign-up-overlay', true, { expires: 1, path: window.location.pathname });
+        bubEvents.track('OptinMonster campaign: ' + event.detail.Campaign.name, "Campaign Shown", { label: "campaign_id", value: event.detail.Campaign.id });
+  
+        var formSubmissionId = "#optinmonster-submission-form";
+  
+        if (document.querySelector(formSubmissionId)) {
+          var formParams = {
+            campaign_name: event.detail.Campaign.name,
+            campaign_id: event.detail.Campaign.id,
+          };
+  
+          for (var key in formParams) {
+            $(formSubmissionId).append("<input type='hidden' name='"+key+"' value='" + formParams[key] + "' />");
+          }
+  
+          // Setup Recaptcha V3
+          $(formSubmissionId).append("<input type='hidden' name='recaptcha_v3_token' />");
+          if (window.loadRecaptchaV3) {
+            window.loadRecaptchaV3('optinmonster');
+          }
+  
+          document.querySelector(formSubmissionId).addEventListener("submit", function(event) {
+            var campaignName = event.target.elements.campaign_name.value;
+            var campaignId = event.target.elements.campaign_id.value;
+            try {
+              campaignName = event.target.elements.campaign_name.value;
+              campaignId = event.target.elements.campaign_id.value;
+            } catch(err) {
+              // do nothing
+            }
+  
+            bubEvents.track('OptinMonster campaign: ' + campaignName, "Signup button clicked", { label: "campaign_id", value: campaignId });
+  
+            return true;
+          });
+        }
+      });
+    });
+    document.head.appendChild(script);
+  })();
+</script>
+
+</div>
+</div>
+
+<div class="ad ads adsbox doubleclick ad-placement carbon-ads" id="blocker-bait" style="height: 1px; width: 1px; position: absolute; left: -999em; top: -999em">�&nbsp;</div>
+
+
+
+</body></html>
